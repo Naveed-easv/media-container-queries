@@ -1,0 +1,222 @@
+/* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1280,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+:root {
+    --step--2: clamp(0.6944rem, 0.6593rem + 0.1759cqi, 0.8rem);
+    --step--1: clamp(0.8333rem, 0.7778rem + 0.2778cqi, 1rem);
+    --step-0: clamp(1rem, 0.9167rem + 0.4167cqi, 1.25rem);
+    --step-1: clamp(1.2rem, 1.0792rem + 0.6042cqi, 1.5625rem);
+    --step-2: clamp(1.44rem, 1.269rem + 0.8552cqi, 1.9531rem);
+    --step-3: clamp(1.728rem, 1.4902rem + 1.189cqi, 2.4414rem);
+    --step-4: clamp(2.0736rem, 1.7475rem + 1.6303cqi, 3.0518rem);
+    --step-5: clamp(2.4883rem, 2.0462rem + 2.2106cqi, 3.8147rem);
+    --color-1: #0f0f0f;
+    --accent-color: #ff7e5f;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: lightgray;
+}
+.main{
+    max-width: 1600px;
+    margin: auto;
+}
+.intro__text, .post__text, .footer__text{
+    font-size: var(--step-0);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0 0.5em;
+}
+/* Styling navigation */
+.menu{
+    background: var(--accent-color); 
+    font-size: var(--step-1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+	top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 4px hsla(0, 0%, 0%, 0.5);
+}
+.menu__links{
+    display: flex;
+    align-items: center;
+}
+.menu__link{
+    padding: 0.75em 1.25em;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: var(--step-1);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.menu__link:hover{
+    background-color: #feb47b;
+}
+.menu svg{
+    fill: black;
+}
+#sidebarActive{
+    display: none; /* hides the checkbox on desktop */
+}
+.openSidebar, .closeSidebar{
+    display: none; /* hides the open and close buttons on desktop */
+}
+.intro__title, .post__title {
+    font-family: 'Josefin Sans';
+}
+.intro__title{
+    text-align: center;
+    font-size: var(--step-4);
+}
+.intro, .blog {
+    margin-block: 2em;
+    padding: 1em;
+}
+.intro{
+    margin-block-start: 5em;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.25)
+}
+#capetown {
+    background-color: lightgreen;
+}
+#london {
+    background-color: yellow;
+}
+#newyork {
+    background-color: violet;
+}
+#paris {
+    background-color: orange;
+}
+#hanoi {
+    background-color: greenyellow;
+}
+/* Styling the city blog */
+.blog{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 1.5em;
+    container: posts / inline-size;
+}
+.blog__post{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 1.5em;
+    box-shadow: 0 4px 4px hsla(0, 0%, 0%, 0.5);
+    border-radius: 8px;
+    gap: 0.5em;
+}
+.post__title{
+    font-size: var(--step-2);
+}
+.post__img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px hsla(0, 0%, 0%, 0.25);
+}
+.cardsParis{
+    grid-column: span 2;
+}
+.footer__text {
+    text-align: center;
+    font-size: var(--step--1);
+    padding-block-end: 1em;
+}
+@container posts (65ch <= width <= 105ch) {
+    .blog__post{
+        display: grid;
+        grid-template-columns: auto minmax(25ch, 1fr);
+    }
+    .blog__post h2{
+        grid-column: 1 / -1;
+    }
+}
+@media screen and (width <= 950px) {
+    .cardsParis{
+        grid-column: span 1;
+    }
+}
+@media screen and (width <= 650px) {
+    .blog{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        column-gap: 0.5em;
+    }
+    .blog__post{
+        padding: 0.5em;
+    }
+    .post__title{
+        margin-block: 0.5em;
+    }
+    .intro{
+        margin-block: 4em 1em;
+    }
+    .blog{
+        margin: 0;
+        padding: 0.5em;
+    }
+    /* place the menu icon to the right */
+    .menu{
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .menu__links{
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: 0;
+        right: -100%; /* hides the menu so that it can be animated */
+        z-index: 2;
+        background: #333;
+        width: 60vw;
+        box-shadow: -5px 0 5px hsla(0, 0%, 0%, 0.25);
+        height: 100%;
+        transition: 400ms ease-in-out;
+    }
+    .menu__link{
+        color: white;
+        height: auto;
+        width: 100%;
+        padding: 1em 2em;
+    }
+    .menu svg{
+        fill: white;
+    }
+    .openSidebar, .closeSidebar{
+        display: block;
+        padding: 0.5em 1.25em;
+    }
+    /* the checkbox is hidden by default, but once it's checked it becomes visible */
+    #sidebarActive:checked ~ .menu__links{
+        right: 0;
+    }
+    /* adds an overlay so the user can press anywhere on the screen besides the nav bar to close it */
+    #sidebarActive:checked ~ #overlay{
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+}
+/* checks whether the user has their system set to dark mode and switches the theme accordingly */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #1f1f1f;
+    }
+    .intro__title, 
+    .intro__text,
+    .intro__text--bottom, 
+    .footer__text {
+        color: white
+    }
+}
