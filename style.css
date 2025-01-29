@@ -81,7 +81,7 @@ body {
 }
 .intro{
     margin-block-start: 5em;
-    border-bottom: 1px solid hsla(0, 0%, 100%, 0.25)
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.25)
 }
 #capetown {
     background-color: lightgreen;
@@ -218,5 +218,8 @@ body {
     .intro__text--bottom, 
     .footer__text {
         color: white
+    }
+    .intro{
+        border-bottom: 1px solid hsla(0, 0%, 100%, 0.25)
     }
 }
